@@ -33,10 +33,27 @@ function operate(num1, operator, num2){
 
 }
 
-console.log(operate(9, "+", 4));
-console.log(operate(9, "-", 4));
-console.log(operate(9, "*", 4));
-console.log(operate(9, "/", 4));
+const buttons = document.getElementsByClassName("btn");
+console.log(buttons);
+
+for (let i= 0; i<buttons.length; i++){
+    buttons[i].addEventListener('click', (e)=> {
+        console.log("fucker");
+        let buttonValue = e.target.id;
+        console.log(buttonValue);
+    });
+}
+
+
+
+
+
+
+
+// console.log(operate(9, "+", 4));
+// console.log(operate(9, "-", 4));
+// console.log(operate(9, "*", 4));
+// console.log(operate(9, "/", 4));
 
 
 // console.log(add(2,8));
