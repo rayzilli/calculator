@@ -33,16 +33,40 @@ function operate(num1, operator, num2){
 
 }
 
-const buttons = document.getElementsByClassName("btn");
-console.log(buttons);
-
-for (let i= 0; i<buttons.length; i++){
-    buttons[i].addEventListener('click', (e)=> {
-        console.log("fucker");
-        let buttonValue = e.target.id;
-        console.log(buttonValue);
-    });
+function displayWindow(buttonValue){
+    if(buttonValue === "clear"){
+        document.getElementById("display").innerHTML = "";
+    }
+    else if(buttonValue ==="="){
+        console.log(screenValue)
+    }
+    else {
+        let screenValue = document.getElementById("display").innerHTML += buttonValue;
+        console.log(screenValue);
+       }
+  
 }
+
+
+
+
+// const buttons = document.getElementsByClassName("btn");
+
+// for (let i= 0; i<buttons.length; i++){
+//     buttons[i].addEventListener('click', (e)=> {
+//         let buttonValue = e.target.id;
+//         displayWindow(buttonValue);
+//     });
+// }
+
+//set up eventlistener for numbers
+const numbers = document.querySelectorAll(".number");
+numbers.forEach((e) =>{
+    e.addEventListener('click', () =>{
+        displayWindow(e.id);
+        console.log(e.id);
+    });
+});
 
 
 
