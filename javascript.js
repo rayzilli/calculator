@@ -29,7 +29,7 @@ function operate(num1, operator, num2){
     console.log(multiplication);
     return multiplication;
    case "/":
-    let division = divide(num1,num2);
+    let division = divide(Number(num1),Number(num2));
     return division; 
     }
 
@@ -38,26 +38,27 @@ function operate(num1, operator, num2){
 function displayWindow(buttonValue){
     if(buttonValue === "clear"){
         document.getElementById("display").innerHTML = "";
-    }
-    else if(buttonValue ==="="){
-        console.log(screenValue)
+
     }
     else {
         let screenValue = document.getElementById("display").innerHTML += buttonValue;
-        // console.log(screenValue);
        }
   
 }
 
 let total = [];
 let number1 = ""; 
+displayWindow("0");
 
 //set up eventlistener for numbers
 const numbers = document.querySelectorAll(".number");
 numbers.forEach((e) =>{
     e.addEventListener('click', () =>{
-        number1 = number1 + e.id; 
-        displayWindow(e.id);
+        if (document.querySelector("#display").innerText === "0"){
+           displayWindow("clear");
+        }
+        number1 = number1 + e.value; 
+        displayWindow(e.value);
         console.log(e.id);
     });
 });
@@ -69,8 +70,9 @@ operatorValue.forEach((e)=>{
         total.push(number1);
         total.push(e.id);
         number1 = "";
-        displayWindow(e.id);
-        console.log(e.id);
+        // displayWindow(e.id);
+        displayWindow("clear");
+    
     })
 
 });
@@ -78,14 +80,22 @@ operatorValue.forEach((e)=>{
 //event listener for equals
 const equals = document.getElementById("=");
 equals.addEventListener('click', (e) =>{
-    total.push(number1);
-     displayWindow("clear");
      
-     if (total.length <= 3){
+     displayWindow("clear");
+     if (total.length <=1 ){
+        console.log("wrong buddy");
+     }
+
+     else if(total.length <= 3){
+        //answer if 2 numbers are used
+        total.push(number1);
         let firstNumber = operate(total[0],total[1],total[2])
-        console.log(firstNumber)
+        displayWindow(firstNumber);
+        total.pop();
      }
      else {
+        //answer if more than 2 numbers are used
+     total.push(number1); 
      let newTotal = operate(total[0],total[1],total[2]);
      console.log("total of first 2 numbers= " +newTotal);
      let firstNumber = total.slice(3, total.length);
@@ -96,10 +106,29 @@ equals.addEventListener('click', (e) =>{
         console.log("newtotal " + newTotal);
         firstNumber = firstNumber.slice(2,firstNumber.length);
      }
-     displayWindow(newTotal);
-    }  
+     total.pop(); 
+      displayWindow(newTotal);
 
+    }  
+   
 })
+
+const clear = document.getElementById("clear");
+clear.addEventListener('click',()=>{
+    console.log("clear");
+    document.getElementById("display").innerHTML = "0";
+    total = [];
+    number1 = ""; 
+})
+
+const deleteButton = document.getElementById("delete");
+deleteButton.addEventListener('click', ()=>{
+    document.getElementById("display").innerHTML = "";
+    total.pop();
+}) 
+
+
+
 
 
 
