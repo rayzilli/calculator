@@ -48,7 +48,8 @@ function displayWindow(buttonValue){
 
     }
     else {
-        let screenValue = document.getElementById("display").innerHTML += buttonValue;
+        let screenValue = document.getElementById("display").innerHTML + buttonValue;
+        document.getElementById("display").innerHTML = screenValue;
        }
   
 }
@@ -73,10 +74,13 @@ operatorValue.forEach((e)=>{
             isEqual = true; 
             operator = e.id;
         }
+        
       else if (total == ""){
         total = number1;
         number1 = "";
         operator = e.id;
+        // displayWindow("clear");
+        // displayWindow(total);
       }
       else{
         total = operate(total,operator,number1);
@@ -95,7 +99,7 @@ operatorValue.forEach((e)=>{
 const equals = document.getElementById("=");
 equals.addEventListener('click', (e) =>{
     isEqual = true;
-    if(total == ""){
+    if(total == "" & number1 == 0){
         displayWindow ("clear");
         displayWindow("0");
     }
@@ -109,16 +113,20 @@ equals.addEventListener('click', (e) =>{
 
 const clear = document.getElementById("clear");
 clear.addEventListener('click',()=>{
-    console.log("clear");
-    document.getElementById("display").innerHTML = "0";
     total = "";
-    number1 = "";
-    operator = ""; 
+    number1 = ""; 
+    operator = "";
+    displayWindow("0");
+    isEqual = false;
+
+
 })
 
 const deleteButton = document.getElementById("delete");
 deleteButton.addEventListener('click', ()=>{
-    number1 = "";
+    number1 = number1.slice(0,-1);
+    displayWindow("clear");
+    displayWindow(number1);   
 }) 
 
 
