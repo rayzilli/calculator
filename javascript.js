@@ -116,6 +116,7 @@ clear.addEventListener('click',()=>{
     total = "";
     number1 = ""; 
     operator = "";
+    displayWindow("clear");
     displayWindow("0");
     isEqual = false;
 
