@@ -4,19 +4,9 @@ body{
     font-size: 16px; 
 }
 
-.calculator-buttons{
-    display:grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: minmax(50px, auto);
-    grid-auto-columns: minmax(50px, auto);
-    grid-auto-flow: row;
-    gap: 5px;
-    margin-top: 10px;
-    background: rgb(0, 0, 0); 
-    padding: 5px; 
-}
-
 .calculator{
+    display: flex; 
+    flex-direction: column;
     margin:auto; 
     max-width: 400px;
     background-color:  #aaa;
@@ -26,21 +16,34 @@ body{
     
 }
 
-button{
-    font-size: 1.1em;
+.calculator-buttons{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(50px, auto);
+    grid-auto-columns: minmax(50px, auto);
+    grid-auto-flow: row;
+    gap: 1px;
+    margin-top: 10px;
+    background: rgb(0, 0, 0); 
+    padding: 5px; 
 }
+
 
 #clear{
     grid-column: 1 / 3;
 }
 
-#delete{
-   grid-column: 3/ 4;
-}
-
 
 #zero{
     grid-column: 1/3; 
+}
+
+.number{
+  font-size: 1.2rem;
+}
+
+.operator{
+    font-size: 1.2rem; 
 }
 
 #display-holder{
