@@ -2,12 +2,11 @@ body{
     background-color: black;
     color: black;
     font-size: 16px; 
+    display: flex; 
+    justify-content: center;
 }
 
 .calculator{
-    display: flex; 
-    flex-direction: column;
-    margin:auto; 
     max-width: 400px;
     background-color:  #aaa;
     padding: 20px; 
